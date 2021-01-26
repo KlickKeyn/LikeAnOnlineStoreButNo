@@ -1,6 +1,9 @@
 package Buyer;
 
+import Product.Product;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public interface BuyerAction {
@@ -8,7 +11,7 @@ public interface BuyerAction {
 
     int getMoney();
 
-    Map<String, Integer> getBasketContens();
+    List<Product> getBasketContens();
 
-    void addToBasket(Map<String, Integer> products);
+    void addToBasket(List<Product> products);
 }

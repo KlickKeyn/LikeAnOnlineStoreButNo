@@ -1,14 +1,16 @@
 package Buyer;
 
-import java.util.HashMap;
-import java.util.Map;
+import Product.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BuyerAbstract implements BuyerAction {
     private int money;
-    protected Map<String, Integer> basket;
+    protected List<Product> basket;
 
     public BuyerAbstract(int money) {
-        basket = new HashMap<String, Integer>();
+        basket = new ArrayList<Product>();
         this.money = money;
 
     }
@@ -21,9 +23,9 @@ public abstract class BuyerAbstract implements BuyerAction {
         return money;
     }
 
-    public Map<String, Integer> getBasketContens() {
+    public List<Product> getBasketContens() {
         return basket;
     }
 
-    public abstract void addToBasket(Map<String, Integer> products);
+    public abstract void addToBasket(List<Product> products);
 }
