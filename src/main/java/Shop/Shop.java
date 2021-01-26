@@ -31,10 +31,13 @@ public class Shop extends ShopAbstract {
         return userBasket;
     }
     public int pay(List<Product> products) {
-//        for (int i = 0; i < products.size(); i++) {
-//            products
-//        }
-        return 0;
+        int summ = 0;
+        for (Product product : products) {
+            summ += product.getCnt() * product.getPrice();
+        }
+        money += summ;
+
+        return summ;
     }
 
     public void loadProductsOnStalls(List<Product> stall) {

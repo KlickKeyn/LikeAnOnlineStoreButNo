@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ShopAbstract implements ShopAction{
-    private int money;
+    protected int money;
     protected List<Product> stall;
 
     public ShopAbstract(int money) {
