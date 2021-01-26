@@ -1,22 +1,21 @@
 package Buyer;
 
-import java.util.HashMap;
+import java.util.Map;
 
-public abstract class Buyer implements BuyerActions{
-    private int money;
-    private HashMap<String, Integer> basket;
-
-    public void setMoney(int money) {
-        this.money = money;
+public class Buyer extends BuyerAbstract{
+    public Buyer(int money) {
+        super(money);
     }
 
-    public int getMoney() {
-        return money;
+    public void addToBasket(Map.Entry<String, Integer> product) {
+        String productName = product.getKey();
+        Integer productCnt = product.getValue();
+        if (basket.containsKey(productName)) {
+            Integer productCntBusket = basket.get(productName);
+            basket.put(productName, productCnt + productCntBusket);
+        } else {
+            basket.put(productName, productCnt);
+        }
     }
 
-    public HashMap<String, Integer> getBasketContens() {
-        return basket;
-    }
-
-    public abstract void addToBasket(HashMap<String, Integer> products);
 }
