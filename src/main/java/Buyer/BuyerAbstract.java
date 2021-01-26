@@ -25,5 +25,5 @@ public abstract class BuyerAbstract implements BuyerAction {
         return basket;
     }
 
-    public abstract void addToBasket(Map.Entry<String, Integer> product);
+    public abstract void addToBasket(Map<String, Integer> products);
 }

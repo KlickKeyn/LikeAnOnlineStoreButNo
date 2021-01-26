@@ -10,5 +10,5 @@ public interface BuyerAction {
 
     Map<String, Integer> getBasketContens();
 
-    void addToBasket(Map.Entry<String, Integer> product);
+    void addToBasket(Map<String, Integer> products);
 }
