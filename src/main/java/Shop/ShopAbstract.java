@@ -6,7 +6,7 @@ import Product.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ShopAbstract implements ShopAction{
+public abstract class ShopAbstract implements ShopAction {
     protected int money;
     protected List<Product> stall;
 
@@ -20,11 +20,11 @@ public abstract class ShopAbstract implements ShopAction{
 
     public abstract List<Product> getProductList();
 
-    public abstract void addProductToBasket(Product product);
+    public abstract void addProductsToBasket(List<Product> products);
 
     public abstract List<Product> giveProductsToUser();
 
-    public abstract int pay(List<Product> products);
+    public abstract int sell(List<Product> products);
 
-    public abstract void loadProductsOnStalls(List<Product> stall);
+    protected abstract void loadProductsOnStalls(List<Product> stall);
 }

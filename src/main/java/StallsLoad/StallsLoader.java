@@ -5,6 +5,8 @@ import Product.Product;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Utils.RandomUtil.rnd;
+
 public class StallsLoader {
     private static List<String> crtProductList() {
         List<String> productNames = new ArrayList<String>();
@@ -18,11 +20,7 @@ public class StallsLoader {
         return productNames;
     }
 
-    private static int rnd(int min, int max)
-    {
-        max -= min;
-        return (int) (Math.random() * ++max) + min;
-    }
+
 
     public static void load(List<Product> stall) {
         List<String> productNames = crtProductList();

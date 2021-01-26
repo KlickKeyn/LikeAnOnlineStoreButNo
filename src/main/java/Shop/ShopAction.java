@@ -11,11 +11,9 @@ public interface ShopAction {
 
     List<Product> getProductList();
 
-    void addProductToBasket(Product product);
+    void addProductsToBasket(List<Product> products);
 
     List<Product> giveProductsToUser();
 
-    int pay(List<Product> products);
-
-    void loadProductsOnStalls(List<Product> stall);
+    int sell(List<Product> products);
 }

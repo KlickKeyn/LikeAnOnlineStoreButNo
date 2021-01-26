@@ -23,14 +23,15 @@ public class Shop extends ShopAbstract {
         return stall;
     }
 
-    public void addProductToBasket(Product product) {
-        userBasket.add(product);
+    public void addProductsToBasket(List<Product> products) {
+        userBasket.addAll(products);
     }
 
     public List<Product> giveProductsToUser() {
         return userBasket;
     }
-    public int pay(List<Product> products) {
+
+    public int sell(List<Product> products) {
         int summ = 0;
         for (Product product : products) {
             summ += product.getCnt() * product.getPrice();
@@ -40,7 +41,7 @@ public class Shop extends ShopAbstract {
         return summ;
     }
 
-    public void loadProductsOnStalls(List<Product> stall) {
+    protected void loadProductsOnStalls(List<Product> stall) {
         StallsLoader.load(stall);
     }
 }
