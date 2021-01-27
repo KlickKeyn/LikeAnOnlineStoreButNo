@@ -12,19 +12,16 @@ public abstract class BuyerAbstract implements BuyerAction {
     public BuyerAbstract(int money) {
         basket = new ArrayList<Product>();
         this.money = money;
-
     }
 
     public boolean buyProducts(int money) {
         if (money > this.money) {
             System.out.println("Бля, сука, я бомж нахуй");
-
             return false;
         } else {
             this.money -= money;
             System.out.println("Я купиль, я ни бомж");
             System.out.println(this.money);
-
             return true;
         }
     }

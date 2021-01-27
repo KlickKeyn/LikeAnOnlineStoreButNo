@@ -1,30 +1,19 @@
 package Shop;
 
-import Buyer.Buyer;
 import Product.Product;
+import StallsLoad.Loader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ShopAbstract implements ShopAction {
     protected int money;
     protected List<Product> stall;
+    protected Loader loader;
 
-    public ShopAbstract(int money) {
+    public ShopAbstract(int money, Loader loader) {
         this.money = money;
-        stall = new ArrayList<Product>();
-        loadProductsOnStalls(stall);
+        this.loader = loader;
+
+        stall = this.loader.load();
     }
-
-    public abstract boolean registration(Buyer buyer);
-
-    public abstract List<Product> getProductList();
-
-    public abstract void addProductsToBasket(List<Product> products);
-
-    public abstract List<Product> giveProductsToUser();
-
-    public abstract int sell(List<Product> products);
-
-    protected abstract void loadProductsOnStalls(List<Product> stall);
 }

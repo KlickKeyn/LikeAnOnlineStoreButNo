@@ -7,7 +7,8 @@ import java.util.List;
 
 import static Utils.RandomUtil.rnd;
 
-public class Buyer extends BuyerAbstract{
+public class Buyer extends BuyerAbstract {
+
     public Buyer(int money) {
         super(money);
     }
@@ -15,6 +16,7 @@ public class Buyer extends BuyerAbstract{
     public void addToBasket(List<Product> products) {
         boolean added = false;
 
+        // написать красиво
         for (Product product : products) {
             for (Product usersProduct : basket) {
                 if (product.getName().equals(usersProduct.getName())) {
@@ -36,7 +38,7 @@ public class Buyer extends BuyerAbstract{
         for (Product product : productList) {
             int rollOfTheDice = rnd(0, 100);
             if (rollOfTheDice > 50) {
-                likedProduct = product;
+                likedProduct = product; // ты копируешь ссылку туть
                 likedProduct.setCnt(rnd(1, 2));
                 likedProducts.add(likedProduct);
             }

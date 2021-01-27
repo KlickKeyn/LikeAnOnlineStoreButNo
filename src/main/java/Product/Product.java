@@ -1,9 +1,9 @@
 package Product;
 
 public class Product {
-    String name;
-    int cnt;
-    int price;
+    private String name;
+    private int cnt;
+    private int price;
 
     public Product(String name, int cnt, int price) {
         this.name = name;

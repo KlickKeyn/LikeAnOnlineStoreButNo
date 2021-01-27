@@ -4,7 +4,6 @@ import Buyer.Buyer;
 import Product.Product;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ShopAction {
     boolean registration(Buyer buyer);
