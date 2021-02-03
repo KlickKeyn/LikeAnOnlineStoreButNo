@@ -45,7 +45,7 @@ public class Buyer extends BuyerAbstract {
         for (Product product : productList) {
             int rollOfTheDice = rnd(0, 100);
             if (rollOfTheDice > 50) {
-                likedProduct = product; // ты копируешь ссылку туть
+                likedProduct = new Product(product); // ты копируешь ссылку туть // больше нет :\
                 likedProduct.setCnt(rnd(1, 2));
                 likedProducts.add(likedProduct);
             }
