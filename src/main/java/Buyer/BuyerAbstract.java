@@ -7,6 +7,7 @@ import java.util.List;
 
 public abstract class BuyerAbstract implements BuyerAction {
     private int money;
+    private int id;
     protected List<Product> basket;
 
     public BuyerAbstract(int money) {
@@ -14,6 +15,7 @@ public abstract class BuyerAbstract implements BuyerAction {
         this.money = money;
     }
 
+    @Override
     public boolean buyProducts(int money) {
         if (money > this.money) {
             System.out.println("Бля, сука, я бомж нахуй");
@@ -26,8 +28,19 @@ public abstract class BuyerAbstract implements BuyerAction {
         }
     }
 
+    @Override
     public List<Product> getBasketContens() {
         return basket;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     public abstract void addToBasket(List<Product> products);

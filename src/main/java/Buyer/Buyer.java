@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static Utils.RandomUtil.rnd;
+import static Utils.arrayAction.returnObjectOfArrayName;
 
 public class Buyer extends BuyerAbstract {
 
@@ -13,24 +14,30 @@ public class Buyer extends BuyerAbstract {
         super(money);
     }
 
+    @Override
     public void addToBasket(List<Product> products) {
-        boolean added = false;
+        List<Product> bufferProductsList = new ArrayList<Product>();
 
-        // написать красиво
-        for (Product product : products) {
-            for (Product usersProduct : basket) {
-                if (product.getName().equals(usersProduct.getName())) {
-                    usersProduct.setCnt(usersProduct.getCnt() + product.getCnt());
-                    added = true;
-                }
+        products.forEach(product -> {
+            boolean flag = basket.stream().anyMatch(productInBasket -> productInBasket.getName().equals(product.getName()));
+            if (flag) {
+                bufferProductsList.add(product);
+                product.setCnt(product.getCnt() + returnObjectOfArrayName(basket, product.getName()).getCnt());
+            } else {
+                bufferProductsList.add(product);
             }
-            if (!added) {
-                basket.add(product);
+        });
+
+        basket.forEach(productInBasket -> {
+            if (bufferProductsList.stream().noneMatch(productInBuffer -> productInBuffer.getName().equals(productInBasket.getName()))) {
+                bufferProductsList.add(productInBasket);
             }
-            added = false;
-        }
+        });
+
+        basket = bufferProductsList;
     }
 
+    @Override
     public List<Product> chooseProducts(List<Product> productList) {
         List<Product> likedProducts = new ArrayList<Product>();
         Product likedProduct;

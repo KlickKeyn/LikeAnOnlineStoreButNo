@@ -1,17 +1,17 @@
 package DataBase;
 
-import Buyer.Buyer;
+import Buyer.BuyerAction;
 import Product.Product;
 
 import java.util.List;
 import java.util.Map;
 
 public interface DataBaseInterface {
-    void add(Map.Entry<Integer, Buyer> user);
+    void addUser(BuyerAction user);
 
-    void remove(int id);
+    void remove(BuyerAction user);
 
-    List<Product> getUserBasket(int id);
+    List<Product> getUserBasket(BuyerAction user);
 
-    void addToUserBasket(int id, List<Product> products);
+    void addToUserBasket(BuyerAction user, List<Product> products);
 }

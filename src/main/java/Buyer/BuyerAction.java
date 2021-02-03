@@ -12,4 +12,8 @@ public interface BuyerAction {
     void addToBasket(List<Product> products);
 
     List<Product> chooseProducts(List<Product> productList);
+
+    int getId();
+
+    void setId(int id);
 }
