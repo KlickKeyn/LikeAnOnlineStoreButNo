@@ -9,9 +9,11 @@ import java.util.Map;
 public interface DataBaseInterface {
     void addUser(BuyerAction user);
 
-    void remove(BuyerAction user);
+    void removeUser(BuyerAction user);
 
     List<Product> getUserBasket(BuyerAction user);
+
+    void clearUserBasket(BuyerAction user);
 
     void addToUserBasket(BuyerAction user, List<Product> products);
 }
