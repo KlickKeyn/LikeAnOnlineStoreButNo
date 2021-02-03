@@ -5,8 +5,6 @@ import Product.Product;
 import java.util.List;
 
 public interface BuyerAction {
-    boolean buyProducts(int money);
-
     List<Product> getBasketContens();
 
     void addToBasket(List<Product> products);
@@ -16,4 +14,8 @@ public interface BuyerAction {
     int getId();
 
     void setId(int id);
+
+    int getMoney();
+
+    void setMoney(int money);
 }

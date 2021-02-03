@@ -1,21 +1,18 @@
 package Shop;
 
-import Buyer.Buyer;
+import Buyer.BuyerAction;
+import DataBase.DataBase;
 import Product.Product;
 import StallsLoad.Loader;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Shop extends ShopAbstract {
-    List<Product> userBasket;
-
-    public Shop(int money, Loader loader) {
-        super(money, loader);
+    public Shop(int money, Loader loader, DataBase dataBase) {
+        super(money, loader, dataBase);
     }
 
-    public boolean registration(Buyer buyer) {
-        userBasket = new ArrayList<Product>();
+    public boolean registration(BuyerAction buyer) {
+        dataBase.addUser(buyer);
         return true;
     }
 
@@ -23,22 +20,25 @@ public class Shop extends ShopAbstract {
         return stall;
     }
 
-    public void addProductsToBasket(List<Product> products) {
-        userBasket.addAll(products);
+    public void addProductsToBasket(BuyerAction buyer, List<Product> products) {
+        dataBase.addToUserBasket(buyer, products);
     }
 
-    public List<Product> giveProductsToUser() {
-        return userBasket;
-    }
+    public List<Product> sell(BuyerAction buyer) {
+        int sum;
+        List<Product> basket = dataBase.getUserBasket(buyer);
 
-    public int sell(List<Product> products) {
-        int summ = 0;
-        for (Product product : products) {
-            summ += product.getCnt() * product.getPrice();
+        sum = basket.stream().mapToInt(product -> product.getPrice() * product.getCnt()).sum();
+        int buyerMoney = buyer.getMoney();
+        if (buyerMoney - sum >= 0) {
+            money += sum;
+            buyer.setMoney(buyerMoney - sum);
+            System.out.println("Покупатель красавчик, бабки есть");
+            return basket;
         }
-        money += summ;
 
-        return summ;
+        System.out.println("Покупатель бомжара дырявый, бабок нет");
+        return null;
     }
 
 }

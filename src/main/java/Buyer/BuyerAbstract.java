@@ -16,19 +16,6 @@ public abstract class BuyerAbstract implements BuyerAction {
     }
 
     @Override
-    public boolean buyProducts(int money) {
-        if (money > this.money) {
-            System.out.println("Бля, сука, я бомж нахуй");
-            return false;
-        } else {
-            this.money -= money;
-            System.out.println("Я купиль, я ни бомж");
-            System.out.println(this.money);
-            return true;
-        }
-    }
-
-    @Override
     public List<Product> getBasketContens() {
         return basket;
     }
@@ -46,4 +33,14 @@ public abstract class BuyerAbstract implements BuyerAction {
     public abstract void addToBasket(List<Product> products);
 
     public abstract List<Product> chooseProducts(List<Product> productList);
+
+    @Override
+    public int getMoney() {
+        return money;
+    }
+
+    @Override
+    public void setMoney(int money) {
+        this.money = money;
+    }
 }

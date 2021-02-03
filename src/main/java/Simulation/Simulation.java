@@ -1,6 +1,7 @@
 package Simulation;
 
 import Buyer.Buyer;
+import DataBase.DataBase;
 import Product.Product;
 import Shop.Shop;
 import StallsLoad.Loader;
@@ -16,22 +17,13 @@ public class Simulation {
     public static void simulate() {
         Buyer buyer = new Buyer(1500);
         Loader loader = new StallsLoader();
-        Shop shop = new Shop(100, loader);
+        DataBase dataBase = new DataBase();
 
-        shop.registration(buyer); // больше логики для этого метода. Магазин должен распознавать покупателей
+        Shop shop = new Shop(100, loader, dataBase);
+
+        shop.registration(buyer);
 
         List<Product> productList = shop.getProductList();
-        List<Product> likedProducts = buyer.chooseProducts(productList);
-        shop.addProductsToBasket(likedProducts);
-        List<Product> usersProducts = shop.giveProductsToUser();
-        int totalPrice = shop.sell(usersProducts);
-
-        // вытекла абстакция, сука
-        boolean isBuy = buyer.buyProducts(totalPrice);
-        if (isBuy) {
-            buyer.addToBasket(usersProducts);
-            showProducts(usersProducts);
-        }
-
+        List<Product> productListLiked = buyer.chooseProducts(productList);
     }
 }
